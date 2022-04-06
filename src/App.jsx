@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { TodoContext } from "./context/ToDoContext";
-import ToDo from "./components/ToDo";
+import ToDoContainer from "./components/ToDoContainer";
 
 function App() {
-  const { toDo, newToDo, handleNewToDo, handleToDoChange, showToDoIncomplete } =
+  const { toDo, newToDo, handleNewToDo, handleToDoChange } =
     useContext(TodoContext);
 
   return (
@@ -28,18 +28,7 @@ function App() {
       {toDo.length === 0 ? (
         <p className="font-bold text-lg mt-4">No hay tareas agendadas!</p>
       ) : (
-        <div>
-          {toDo.map((todo) => (
-            <ToDo key={todo.id} todo={todo} />
-          ))}
-          <p className="font-bold text-xl mt-2 mb-6">
-            Te quedan{" "}
-            <span className="font-extrabold text-3xl">
-              {showToDoIncomplete()}
-            </span>{" "}
-            Tareas por hacer!
-          </p>
-        </div>
+        <ToDoContainer toDos={toDo} />
       )}
     </div>
   );
