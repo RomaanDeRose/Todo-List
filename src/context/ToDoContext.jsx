@@ -9,7 +9,6 @@ const ToDoContextProvider = ({ children }) => {
 
   const handleToDoChange = (e) => setNewToDo(e.target.value);
 
-  console.log(toDo);
   const handleNewToDo = () => {
     setToDo([
       ...toDo,
