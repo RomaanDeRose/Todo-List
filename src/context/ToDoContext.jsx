@@ -8,14 +8,8 @@ const ToDoContextProvider = ({ children }) => {
 
   const handleToDoChange = (e) => setNewToDo(e.target.value);
 
-  const handleNewToDo = (e) => {
-    e.preventDefault();
-    newToDo.trim() === ""
-      ? console.log("Tarea vacia!")
-      : setToDo([
-          ...toDo,
-          { title: newToDo, id: Math.random() * 1000000, completed: false },
-        ]);
+  const handleNewToDo = () => {
+    setToDo([...toDo, { title: newToDo, id: Math.random() * 1000000 }]);
     setNewToDo("");
   };
 
@@ -27,8 +21,7 @@ const ToDoContextProvider = ({ children }) => {
 
   const showToDoIncomplete = () => {
     const allToDos = [...toDo];
-    const filterToDos = allToDos.filter((todo) => todo.completed === false);
-    return filterToDos.length;
+    return allToDos.length;
   };
 
   return (
