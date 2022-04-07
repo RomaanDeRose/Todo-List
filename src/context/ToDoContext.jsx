@@ -1,4 +1,5 @@
 import { useState, createContext } from "react";
+import { toastSuccess } from "../services/services";
 
 const TodoContext = createContext();
 
@@ -8,8 +9,13 @@ const ToDoContextProvider = ({ children }) => {
 
   const handleToDoChange = (e) => setNewToDo(e.target.value);
 
+  console.log(toDo);
   const handleNewToDo = () => {
-    setToDo([...toDo, { title: newToDo, id: Math.random() * 1000000 }]);
+    setToDo([
+      ...toDo,
+      { title: newToDo, id: (Math.random() * 1000000).toFixed(2) },
+    ]);
+    toastSuccess(`Tarea agendada con éxito!`);
     setNewToDo("");
   };
 

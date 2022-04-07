@@ -1,17 +1,18 @@
 import { useContext } from "react";
 import { Toaster } from "react-hot-toast";
-import { useToastError } from "./hooks/useToastError";
+import { toastError } from "./services/services";
 import { TodoContext } from "./context/ToDoContext";
 import ToDoContainer from "./components/ToDoContainer";
 
 function App() {
   const { toDo, newToDo, handleNewToDo, handleToDoChange } =
     useContext(TodoContext);
-  const { notify } = useToastError("Por favor, rellena el campo!");
 
   const checkNewTodo = (e) => {
     e.preventDefault();
-    newToDo.trim() !== "" ? handleNewToDo() : notify();
+    newToDo.trim() !== ""
+      ? handleNewToDo()
+      : toastError("Por favor, rellena el campo!");
   };
 
   return (
