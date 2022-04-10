@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Toaster } from "react-hot-toast";
 import { toastError } from "./services/services";
 import { TodoContext } from "./context/ToDoContext";
-import ToDoForm from "./components/TodoForm";
+import ToDoForm from "./components/ToDoForm";
 import ToDoContainer from "./components/ToDoContainer";
 
 function App() {
