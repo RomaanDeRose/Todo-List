@@ -12,7 +12,9 @@ function ToDoContainer({ toDos }) {
       ))}
       <p className="font-bold text-xl mt-2 mb-6">
         Te quedan{" "}
-        <span className="font-extrabold text-3xl">{showToDoIncomplete()}</span>{" "}
+        <span className="font-extrabold text-4xl mx-1">
+          {showToDoIncomplete()}
+        </span>{" "}
         Tareas por hacer!
       </p>
     </div>

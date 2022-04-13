@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { motion } from "framer-motion";
 import { Toaster } from "react-hot-toast";
 import { toastError } from "./services/services";
 import { TodoContext } from "./context/ToDoContext";
@@ -18,12 +19,24 @@ function App() {
 
   return (
     <div className="bg-gray-900 min-h-screen text-center text-purple-500 py-1">
-      <h1 className="text-5xl pt-4 mb-4 font-black">Todo List</h1>
+      <motion.h1
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.4, type: "sping" }}
+        className="text-5xl pt-4 mb-4 font-black"
+      >
+        Todo List
+      </motion.h1>
       <TodoForm checkNewTodo={checkNewTodo} />
       {toDo.length === 0 ? (
-        <p className="font-bold text-lg md:text-xl mt-4 md:mt-6">
+        <motion.p
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.4, delay: 0.8 }}
+          className="font-bold text-lg md:text-xl mt-4 md:mt-6"
+        >
           No hay tareas agendadas!
-        </p>
+        </motion.p>
       ) : (
         <ToDoContainer toDos={toDo} />
       )}

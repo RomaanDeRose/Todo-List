@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { motion } from "framer-motion";
 import { TodoContext } from "../context/ToDoContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +9,12 @@ const ToDo = ({ todo }) => {
   const { id, title } = todo;
 
   return (
-    <div className="w-4/5 max-w-lg flex justify-between items-center mx-auto my-8 p-5 rounded-xl shadow-lg shadow-purple-500/40 bg-purple-500 text-white transition-all hover:scale-105 hover:bg-purple-600 hover:shadow-purple-600/40">
+    <motion.div
+      initial={{ x: -250, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.1 }}
+      className="w-4/5 max-w-lg flex justify-between items-center mx-auto my-8 p-5 rounded-xl shadow-lg shadow-purple-500/40 bg-purple-500 text-white transition-all hover:bg-purple-700 hover:shadow-purple-700/40"
+    >
       <h3 className="font-black capitalize text-xl">{title}</h3>
       <div>
         <FontAwesomeIcon
@@ -17,7 +23,7 @@ const ToDo = ({ todo }) => {
           onClick={() => deleteToDo(id)}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
