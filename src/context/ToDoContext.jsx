@@ -1,11 +1,18 @@
-import { useState, createContext } from "react";
+import { useState, useEffect, createContext } from "react";
 import { toastSuccess } from "../services/services";
 
 const TodoContext = createContext();
 
 const ToDoContextProvider = ({ children }) => {
-  const [toDo, setToDo] = useState([]);
+  const [toDo, setToDo] = useState(() => {
+    const localToDo = localStorage.getItem("toDo");
+    return localToDo ? JSON.parse(localToDo) : [];
+  });
   const [newToDo, setNewToDo] = useState("");
+
+  useEffect(() => {
+    window.localStorage.setItem("toDo", JSON.stringify(toDo));
+  }, [toDo]);
 
   const handleToDoChange = (e) => setNewToDo(e.target.value);
 
